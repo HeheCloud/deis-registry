@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+{{ if exists "/deis/store/gateway/accessKey" }}
+
 import boto
 import sys
 from boto.s3.connection import OrdinaryCallingFormat
@@ -37,3 +39,5 @@ if '.' in name:
 
 if conn.lookup(name) is None:
     conn.create_bucket(name)
+
+{{ end }}

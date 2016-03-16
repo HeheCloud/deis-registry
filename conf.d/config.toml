@@ -7,6 +7,5 @@ mode  = "0644"
 keys = [
   "/deis/cache",
   "/deis/registry",
-  "/deis/store/gateway",
 ]
 reload_cmd = "/app/bin/reload"
