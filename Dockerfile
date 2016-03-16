@@ -23,6 +23,8 @@ ADD build.sh /app/build.sh
 
 RUN DOCKER_BUILD=true /app/build.sh
 
+RUN echo "http://mirrors.ustc.edu.cn/alpine/v3.2/main" > /etc/apk/repositories
+
 ADD . /app
 
 ENV DEIS_RELEASE 1.13.0-dev
