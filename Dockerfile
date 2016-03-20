@@ -1,5 +1,9 @@
 FROM alpine:3.3
 
+ENV LANG="en_US.UTF-8" \
+    LC_ALL="en_US.UTF-8" \
+    LANGUAGE="en_US.UTF-8"
+
 # install common packages
 RUN echo "http://mirrors.ustc.edu.cn/alpine/v3.3/main/" > /etc/apk/repositories && \
 		echo "http://mirrors.ustc.edu.cn/alpine/v3.3/community/" >> /etc/apk/repositories
