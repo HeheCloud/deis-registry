@@ -2,7 +2,7 @@ FROM alpine:3.3
 
 # install common packages
 RUN echo "\nhttp://mirrors.ustc.edu.cn/alpine/v3.3/main/" >> /etc/apk/repositories && \
-		echo "\nhttp://mirrors.ustc.edu.cn/alpine/v3.3/community/" >> /etc/apk/repositories && \
+		echo "\nhttp://mirrors.ustc.edu.cn/alpine/v3.3/community/" >> /etc/apk/repositories
 RUN apk update && apk upgrade
 RUN apk add --update-cache curl bash sudo docker-registry \
 	&& rm -rf /var/cache/apk/*
