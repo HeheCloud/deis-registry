@@ -1,12 +1,10 @@
-FROM alpine:3.2
+FROM alpine:3.3
 
 # install common packages
-RUN echo "http://mirrors.ustc.edu.cn/alpine/v3.2/main/" > /etc/apk/repositories
-RUN apk add --update-cache curl bash sudo
-RUN apk update && \
-		apk upgrade && \
-		apk add --update-cache docker-registry && \
-		rm -rf /var/cache/apk/*
+# RUN echo "http://mirrors.ustc.edu.cn/alpine/v3.3/main/" > /etc/apk/repositories
+RUN apk update && apk upgrade
+RUN apk add --update-cache curl bash sudo docker-registry \
+	&& rm -rf /var/cache/apk/*
 
 # install etcdctl
 RUN curl -sSL -o /usr/local/bin/etcdctl http://sinacloud.net/hehe/etcd/etcdctl-v0.4.9 \
