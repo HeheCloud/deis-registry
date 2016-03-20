@@ -1,4 +1,4 @@
-FROM alpine:3.2
+FROM alpine:3.3
 
 # install common packages
 RUN echo "http://mirrors.ustc.edu.cn/alpine/v3.2/main/" > /etc/apk/repositories
