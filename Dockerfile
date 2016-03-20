@@ -19,8 +19,6 @@ RUN curl -sSL -o /usr/local/bin/etcdctl http://sinacloud.net/hehe/etcd/etcdctl-v
 # RUN curl -sSL -o /usr/local/bin/confd http://sinacloud.net/hehe/confd/confd-0.11.0-linux-amd64 \
 #	&& chmod +x /usr/local/bin/confd
 
-RUN apk del curl && rm -rf /var/cache/apk/*
-
 ADD . /app
 
 # define the execution environment
