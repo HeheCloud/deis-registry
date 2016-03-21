@@ -32,16 +32,11 @@ pip install --disable-pip-version-check --no-cache-dir pyopenssl ndg-httpsclient
 wget -O - "https://github.com/docker/docker-registry/archive/0.9.1.tar.gz" | tar -xz && \
   mv docker-registry-0.9.1 /docker-registry
 
-
-# install boto configuration
-cd /docker-registry && pip install --disable-pip-version-check --no-cache-dir -r requirements/main.txt
-
 # Install core
 pip install --disable-pip-version-check --no-cache-dir /docker-registry/depends/docker-registry-core
 
 # Install registry
 pip install --disable-pip-version-check --no-cache-dir "file:///docker-registry#egg=docker-registry[bugsnag,newrelic,cors]"
-
 
 # cleanup. indicate that python is a required package.
 apk del --purge \
