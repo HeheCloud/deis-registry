@@ -31,9 +31,6 @@ pip install --disable-pip-version-check --no-cache-dir pyopenssl ndg-httpsclient
 adduser -D -s /bin/bash registry
 
 # add the docker registry source from github
-git clone -b new-repository-import-master --single-branch https://github.com/deis/docker-registry /docker-registry && \
-  chown -R registry:registry /docker-registry
-
 wget -O - "https://github.com/docker/docker-registry/archive/0.9.1.tar.gz" | tar -xz && \
   mv docker-registry-0.9.1 /docker-registry
 

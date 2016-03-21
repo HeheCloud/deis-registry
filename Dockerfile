@@ -15,7 +15,7 @@ RUN curl -sSL -o /usr/local/bin/etcdctl http://sinacloud.net/hehe/etcd/etcdctl-v
 	&& chmod +x /usr/local/bin/etcdctl
 
 ENV DOCKER_REGISTRY_CONFIG /docker-registry/config/config.yml
-ENV SETTINGS_FLAVOR deis
+ENV SETTINGS_FLAVOR local
 
 # define the execution environment
 WORKDIR /app
@@ -23,6 +23,8 @@ CMD ["/app/bin/boot"]
 EXPOSE 5000
 
 ADD build.sh /app/build.sh
+
+ADD config/config.yml /docker-registry/config/config.yml
 
 RUN DOCKER_BUILD=true /app/build.sh
 

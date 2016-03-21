@@ -225,4 +225,3 @@ test:
 prod:
     <<: *s3
     storage_path: _env:STORAGE_PATH:/prod
-
