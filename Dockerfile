@@ -23,6 +23,7 @@ CMD ["/app/bin/boot"]
 EXPOSE 5000
 
 ADD build.sh /app/build.sh
+RUN chmod +x /app/build.sh
 
 ADD config/config.yml /docker-registry/config/config.yml
 
