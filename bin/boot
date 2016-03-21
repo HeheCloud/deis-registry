@@ -46,7 +46,8 @@ etcd_set_default protocol http
 
 # spawn the service in the background
 echo "registry: starting registry"
-/usr/bin/docker-registry /app/etc/docker-registry/config.yml >/dev/null 2>&1 &
+cd /docker-registry
+sudo -E -u registry docker-registry &
 SERVICE_PID=$!
 echo "registry: docker registry started in background with pid: ${SERVICE_PID}"
 
