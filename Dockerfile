@@ -24,10 +24,8 @@ EXPOSE 5000
 
 ADD build.sh /app/build.sh
 RUN chmod +x /app/build.sh
-
-ADD config/config.yml /docker-registry/config/config.yml
-
 RUN DOCKER_BUILD=true /app/build.sh
+ADD config/config.yml /docker-registry/config/config.yml
 
 ADD . /app
 

@@ -32,6 +32,21 @@ pip install --disable-pip-version-check --no-cache-dir pyopenssl ndg-httpsclient
 wget -O - "https://github.com/docker/docker-registry/archive/0.9.1.tar.gz" | tar -xz && \
   mv docker-registry-0.9.1 /docker-registry
 
+
+# install boto configuration
+cp /docker-registry/config/boto.cfg /etc/boto.cfg
+cd /docker-registry && pip install --disable-pip-version-check --no-cache-dir -r requirements/main.txt
+
+# Install core
+pip install --disable-pip-version-check --no-cache-dir /docker-registry/depends/docker-registry-core
+
+# Install registry
+pip install --disable-pip-version-check --no-cache-dir "file:///docker-registry#egg=docker-registry[bugsnag,newrelic,cors]"
+
+patch \
+  "$(python -c 'import boto; import os; print os.path.dirname(boto.__file__)')/connection.py" \
+  < /docker-registry/contrib/boto_header_patch.diff
+
 # cleanup. indicate that python is a required package.
 apk del --purge \
   build-base \
