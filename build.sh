@@ -23,12 +23,10 @@ apk add --update-cache \
 
 # install pip
 curl -sSL https://raw.githubusercontent.com/pypa/pip/7.0.3/contrib/get-pip.py | python -
+pip install --upgrade pip
 
 # workaround to python > 2.7.8 SSL issues
 pip install --disable-pip-version-check --no-cache-dir pyopenssl ndg-httpsclient pyasn1
-
-# create a registry user
-adduser -D -s /bin/bash registry
 
 # add the docker registry source from github
 wget -O - "https://github.com/docker/docker-registry/archive/0.9.1.tar.gz" | tar -xz && \
@@ -36,7 +34,6 @@ wget -O - "https://github.com/docker/docker-registry/archive/0.9.1.tar.gz" | tar
 
 
 # install boto configuration
-cp /docker-registry/config/boto.cfg /etc/boto.cfg
 cd /docker-registry && pip install --disable-pip-version-check --no-cache-dir -r requirements/main.txt
 
 # Install core
